@@ -21,7 +21,7 @@
     "redbox-react": "1.6.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.11.1",
+    "webpack-dev-server": "^3.1.11",
     "webpack-cli": "^2.0.10",
     "babel-jest": "^24.9.0",
     "fetch-mock": "~5.13.1",
