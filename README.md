@@ -12,13 +12,16 @@ $ rails server
 ```
 And then, in a separate terminal tab:
 ```
-$ npm install
-$ npm start
+$ yarn install
+$ yarn start
 ```
 
 #### Redis  
 You will also probably need to have a running Redis on your system (e.g. brew install redis.)
 If you don't, tasks will likely be asynchronous, and this shouldn't cause too much issue in development, but I can't promise success in production
+
+*To add to Gemfile*
+`gem 'redis', '~> 4.0'`
 
 When you deploy, you will need to configure with Redis on your Heroku Addons.
 This doc talks briefly about configuration needed. Since we are using React and we already have our own rails code, you can largely ignore the code files excepting the cable.yml file. Take special note of any heroku or terminal commands that may be needed:
