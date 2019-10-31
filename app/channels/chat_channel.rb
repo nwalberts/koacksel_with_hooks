@@ -12,7 +12,6 @@ class ChatChannel < ApplicationCable::Channel
     puts data
     # Currently, we dont actually use this code that much. But you would have to set up these models if you want to record the conversations in your chat.
 
-    puts current_user
 
     chat = Chat.find_or_create_by(id: params[:chat_id])
     new_message = Message.create(body: data["message"], user: User.find(data["user"]["user_id"]))
@@ -29,7 +28,6 @@ class ChatChannel < ApplicationCable::Channel
 
     ActionCable.server.broadcast("chat_#{params[:chat_id]}", chat_json)
   end
+
+
 end
-
-
-# chat_key = "#{Time.now.to_datetime.strftime('%Q')}-#{current_user.id}"

@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < Api::ApiController
-  
+
 end
 
 # DEFUNCT CODE FROM ANOTHER AGE

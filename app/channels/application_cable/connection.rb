@@ -6,13 +6,6 @@ module ApplicationCable
       self.current_user = find_verified_user
     end
 
-    # CHECK STUDENT CODE FOR UPDATES
-    # CHECK STUDENT CODE FOR UPDATES
-    # CHECK STUDENT CODE FOR UPDATES
-    # CHECK STUDENT CODE FOR UPDATES
-    # CHECK STUDENT CODE FOR UPDATES
-
-
     protected
       def find_verified_user
         verified_user = User.find_by(id: cookies.signed['user.id'])

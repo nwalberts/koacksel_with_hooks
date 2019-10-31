@@ -7,39 +7,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">KoackselTwo</a></h1>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <div class="top-bar" data-options="sticky_on: [small, medium, large]">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text"><a href="/">Koacksel</a></li>
+          <% if current_user %>
+          <li><%= link_to "Log Out", destroy_user_session_path, class: "nav-link" %></li>
+          <% end %>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+          <% if current_user == nil %>
+            <li><%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-  <%- end -%>
 
-  <%= yield %>
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
   <%= javascript_include_tag 'application' %>
-  
-  <%- if Rails.env.development? || Rails.env.test? -%> 
+
+  <%- if Rails.env.development? || Rails.env.test? -%>
     <%= javascript_tag do %>
       window.railsEnv = '<%= Rails.env %>'
     <%- end -%>
   <%- end -%>
   <%= javascript_pack_tag 'application' %>
-  
+
   <%= yield :extra_footer %>
 </body>
 </html>
